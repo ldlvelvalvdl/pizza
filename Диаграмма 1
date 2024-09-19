@@ -1,0 +1,52 @@
+#Диаграмма классов
+@startuml
+class Menu {
+    +pizzas: List<Pizza>
+    +starters: List<Starter>
+    +drinks: List<Drink>
+    +desserts: List<Dessert>
+}
+
+class SpecialOffer {
+    +offers: List<Offer>
+}
+
+class Order {
+    +selectedItems: List<MenuItem>
+    +customizations: List<Customization>
+    +totalPrice: double
+    +placeOrder(): void
+}
+
+class Delivery {
+    +deliveryConditions: String
+    +deliveryTime: String
+    +trackOrder(): void
+}
+
+class Review {
+    +comments: String
+    +rating: int
+    +submitReview(): void
+}
+
+class LoyaltyProgram {
+    +loyaltyPoints: int
+    +specialConditions: String
+}
+
+class Pizza {}
+class Starter {}
+class Drink {}
+class Dessert {}
+class MenuItem {}
+class Customization {}
+class Offer {}
+
+Menu "1" -- "1..*" Pizza
+Menu "1" -- "1..*" Starter
+Menu "1" -- "1..*" Drink
+Menu "1" -- "1..*" Dessert
+Order "1" -- "1..*" MenuItem
+Order "1" -- "0..*" Customization
+@enduml
