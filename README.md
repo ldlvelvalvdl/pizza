@@ -138,6 +138,7 @@ Item *--* Десерт
 ```
 
 ### 2.Диаграмма сценариев
+```mermaid
 erDiagram
 actor Customer
 actor Admin
@@ -170,3 +171,4 @@ Customer --> UC10
 Admin --> UC11
 Admin --> UC12
 Admin --> UC13
+```
