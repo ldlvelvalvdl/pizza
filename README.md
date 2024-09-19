@@ -139,36 +139,29 @@ Item *--* Десерт
 
 ### 2.Диаграмма сценариев
 ```mermaid
-erDiagram
-actor Customer
-actor Admin
+sequenceDiagram
+  participant Пользователь
+  participant Сайт
+  participant Кухня
+  participant Доставка
 
-usecase "Просмотреть меню" as UC1
-usecase "Выбрать блюда" as UC2
-usecase "Настроить заказ" as UC3
-usecase "Оформить заказ" as UC4
-usecase "Оплатить заказ" as UC5
-usecase "Получить информацию о доставке" as UC6
-usecase "Оставить отзыв" as UC7
-usecase "Просмотреть специальные предложения" as UC8
-usecase "Просмотреть рецепты" as UC9
-usecase "Задать вопрос" as UC10
-usecase "Управлять специальными предложениями" as UC11
-usecase "Управлять отзывами" as UC12
-usecase "Управлять программой лояльности" as UC13
-
-Customer --> UC1
-Customer --> UC2
-Customer --> UC3
-Customer --> UC4
-Customer --> UC5
-Customer --> UC6
-Customer --> UC7
-Customer --> UC8
-Customer --> UC9
-Customer --> UC10
-
-Admin --> UC11
-Admin --> UC12
-Admin --> UC13
+  Пользователь->>Сайт: Заходит на сайт
+  activate Сайт
+  Сайт->>Пользователь: Показывает меню
+  Пользователь->>Сайт: Выбирает пиццу
+  Сайт->>Пользователь: Отображает детали пиццы
+  Пользователь->>Сайт: Добавляет пиццу в корзину
+  Сайт->>Пользователь: Отображает корзину
+  Пользователь->>Сайт: Оформляет заказ
+  activate Кухня
+  Сайт->>Кухня: Передает заказ
+  Кухня->>Сайт: Подтверждает заказ
+  Сайт->>Пользователь: Подтверждает заказ
+  deactivate Кухня
+  Пользователь->>Сайт: Оплачивает заказ
+  activate Доставка
+  Сайт->>Доставка: Передает заказ
+  Доставка->>Пользователь: Доставляет заказ
+  deactivate Доставка
+  deactivate Сайт
 ```
