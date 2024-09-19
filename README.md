@@ -53,6 +53,7 @@
 
 ### 1. Диаграмма классов
 ```mermaid
+classDiagram
 class Пицца {
   - название : String
   - описание : String
